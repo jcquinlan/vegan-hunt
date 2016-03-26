@@ -1,5 +1,7 @@
 var map, service, infowindow;
 
+var wrapper = document.getElementById('cards');
+
 var markerList = [],
     resultsList = [];
 
@@ -20,7 +22,6 @@ function initMap() {
     // searchMap takes a location, a radius, and search term
     searchMap(currentLocation, 5000, 'vegan');
     getLocation();
-
 }
 
 function initGUI(){
@@ -30,8 +31,8 @@ function initGUI(){
     // adds event listener to GUI so that location updates when selected
     autocomplete.addListener('place_changed', function() {
 
-
       var place = autocomplete.getPlace();
+      
       if (!place.geometry) {
         return;
       }
@@ -47,6 +48,7 @@ function initGUI(){
       }
 
       // Searches the map automatically when a new location is selected
+      destroyCards();
       searchMap(place.geometry.location, 10000, 'vegan');
     });
 }
@@ -65,6 +67,9 @@ function handleResults(results, status){
         console.log(results);
         storeResults(results);
         addMarkers();
+        resultsList.forEach(function(location){
+            createCard(location);
+        });
     }
 }
 
