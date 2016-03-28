@@ -1,5 +1,7 @@
 var map, service, infowindow;
 
+var searchTerm = 'therapy';
+
 var wrapper = document.getElementById('cards');
 
 var markerList = [],
@@ -20,7 +22,7 @@ function initMap() {
     // This just shows the hardcoded start location until a user searches
     initGUI();
     // searchMap takes a location, a radius, and search term
-    searchMap(currentLocation, 5000, 'vegan');
+    searchMap(currentLocation, 5000, searchTerm);
     getLocation();
 }
 
@@ -30,15 +32,14 @@ function initGUI(){
 
     // adds event listener to GUI so that location updates when selected
     autocomplete.addListener('place_changed', function() {
+      destroyCards();
+      clearMarkers();
 
       var place = autocomplete.getPlace();
-      
+
       if (!place.geometry) {
         return;
       }
-
-      clearMarkers();
-      console.log('Test');
 
       if (place.geometry.viewport) {
         map.fitBounds(place.geometry.viewport);
@@ -48,8 +49,7 @@ function initGUI(){
       }
 
       // Searches the map automatically when a new location is selected
-      destroyCards();
-      searchMap(place.geometry.location, 10000, 'vegan');
+      searchMap(place.geometry.location, 10000, searchTerm);
     });
 }
 
@@ -58,13 +58,12 @@ function searchMap(loc, dist, keyword){
         location: loc,
         radius: dist,
         keyword: keyword,
-        type:['restaurant']
+        type:['doctor']
     }, handleResults);
 }
 
 function handleResults(results, status){
     if (status === google.maps.places.PlacesServiceStatus.OK) {
-        console.log(results);
         storeResults(results);
         addMarkers();
         resultsList.forEach(function(location){
@@ -117,6 +116,7 @@ function logLocation(location){
 function populateMap(map){
     markerList.forEach(function(result){
         result.setMap(map);
+        console.log('Marker changed.');
     });
 
 }
@@ -126,4 +126,5 @@ function clearMarkers(){
     populateMap(null);
     // Reset the array of markers to make ready for the new ones
     markerList = [];
+    console.log('Markers removed.');
 }

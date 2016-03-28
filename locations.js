@@ -9,5 +9,8 @@ function createCard(location){
 function destroyCards(){
     while(wrapper.hasChildNodes()){
         wrapper.removeChild(wrapper.childNodes[0]);
+        console.log(wrapper.childNodes.length);
     }
+    resultsList = [];
+    console.log('Cards destroyed');
 }
