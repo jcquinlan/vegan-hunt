@@ -26,3 +26,11 @@ html, body {
 .controls:focus {
     border-color: #4d90fe;
 }
+
+.card {
+    padding: 10px;
+    text-align: center;
+    border: 1px solid #eee;
+    margin-bottom: 10px;
+    height: 100px;
+}

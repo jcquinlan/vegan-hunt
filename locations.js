@@ -1,9 +1,17 @@
 function createCard(location){
-    var item = document.createElement('div');
-    item.classList.add('col-lg-3');
-    item.classList.add('col-sm-4');
-    item.innerHTML = location.name;
-    wrapper.appendChild(item);
+    var col = document.createElement('div');
+    var card = document.createElement('div');
+    col.classList.add('col-lg-3');
+    col.classList.add('col-sm-4');
+    col.classList.add('col-xs-6');
+    card.classList.add('card');
+
+    card.innerHTML = location.name;
+
+    col.appendChild(card);
+    wrapper.appendChild(col);
+
+    console.log(location);
 }
 
 function destroyCards(){
