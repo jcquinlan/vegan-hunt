@@ -1,6 +1,6 @@
 var map, service, infowindow;
 
-var searchTerm = 'therapy';
+var searchTerm = 'vegan';
 
 var wrapper = document.getElementById('cards');
 
@@ -58,7 +58,7 @@ function searchMap(loc, dist, keyword){
         location: loc,
         radius: dist,
         keyword: keyword,
-        type:['doctor']
+        type:['restaurant']
     }, handleResults);
 }
 

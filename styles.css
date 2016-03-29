@@ -1,7 +1,25 @@
+@import url(https://fonts.googleapis.com/css?family=Neuton:400,800,200);
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,800);
+
 html, body {
     height: 100%;
     margin: 0;
     padding: 0;
+}
+h1, h2, h3, h4, h5, h6, p, a {
+    font-family: 'Open Sans', sans-serif;
+}
+
+.title {
+    text-transform: uppercase;
+    font-weight: 800;
+    text-align: center;
+    margin: 50px 0;
+}
+.title span {
+    font-family: 'Neuton', sans-serif;
+    text-transform: lowercase;
+    font-weight: 200;
 }
 #map {
     width: 100%;
@@ -31,6 +49,17 @@ html, body {
     padding: 10px;
     text-align: center;
     border: 1px solid #eee;
-    margin-bottom: 10px;
-    height: 100px;
+    margin-bottom: 30px;
+    height: 150px;
+    cursor: pointer;
+}
+.card > div {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+
+}
+
+.address {
+    opacity: 0.8;
 }

@@ -1,13 +1,15 @@
 function createCard(location){
     var col = document.createElement('div');
     var card = document.createElement('div');
+    var info = document.createElement('div');
     col.classList.add('col-lg-3');
     col.classList.add('col-sm-4');
     col.classList.add('col-xs-6');
     card.classList.add('card');
 
-    card.innerHTML = location.name;
+    info.innerHTML = '<p class="location-name">' + location.name + '</p><p class="address">' + location.vicinity + '</p>';
 
+    card.appendChild(info);
     col.appendChild(card);
     wrapper.appendChild(col);
 
