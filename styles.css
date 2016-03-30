@@ -1,6 +1,11 @@
 @import url(https://fonts.googleapis.com/css?family=Neuton:400,800,200);
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:400,800);
 
+/* Colors
+ * Green - #25B010
+ *
+ */
+
 html, body {
     height: 100%;
     margin: 0;
@@ -14,12 +19,21 @@ h1, h2, h3, h4, h5, h6, p, a {
     text-transform: uppercase;
     font-weight: 800;
     text-align: center;
-    margin: 50px 0;
+    margin: 50px 0 10px 0;
 }
 .title span {
     font-family: 'Neuton', sans-serif;
     text-transform: lowercase;
     font-weight: 200;
+}
+.title i {
+    color: #25B010;
+    margin-left: -10px;
+}
+#loc-search {
+    margin-bottom: 50px;
+    padding: 10px !important;
+    border-bottom: 4px solid #25B010;
 }
 #map {
     width: 100%;
@@ -42,7 +56,7 @@ h1, h2, h3, h4, h5, h6, p, a {
     width: 400px;
 }
 .controls:focus {
-    border-color: #4d90fe;
+    border-color: none;
 }
 
 .card {
