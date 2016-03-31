@@ -6,6 +6,8 @@ function createCard(location){
     col.classList.add('col-sm-4');
     col.classList.add('col-xs-6');
     card.classList.add('card');
+    card.setAttribute('loc', location.vicinity)
+    card.onclick = selectCard;
 
     info.innerHTML = '<p class="location-name">' + location.name + '</p><p class="address">' + location.vicinity + '</p>';
 
@@ -23,4 +25,9 @@ function destroyCards(){
     }
     resultsList = [];
     console.log('Cards destroyed');
+}
+
+function selectCard(event){
+    var location = event.target.getAttribute('loc');
+    console.log(location);
 }

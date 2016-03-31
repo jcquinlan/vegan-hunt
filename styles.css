@@ -67,6 +67,13 @@ h1, h2, h3, h4, h5, h6, p, a {
     height: 150px;
     cursor: pointer;
 }
+.card:hover {
+    border: 1px solid #ccc;
+    box-shadow: 0px 5px 10px rgba(10, 10, 10, 0.1);
+    -webkit-transition: 0.3s;
+    -o-transition: 0.3s;
+    transition: 0.3s;
+}
 .card > div {
     position: relative;
     top: 50%;
