@@ -94,9 +94,13 @@ function createMarker(result) {
   // Adds marker to array of markers so they can be handled later
   markerList.push(marker);
 
-  google.maps.event.addListener(marker, 'click', function() {
+  google.maps.event.addListener(marker, 'mouseover', function() {
       infowindow.setContent(result.name + '<br /> ' + result.vicinity + ' ');
       infowindow.open(map, this);
+  });
+
+  google.maps.event.addListener(marker, 'mouseout', function() {
+      infowindow.close(map, this);
   });
 }
 
