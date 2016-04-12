@@ -7,7 +7,7 @@ function createCard(location){
     col.classList.add('col-xs-6');
     card.classList.add('card');
     card.setAttribute('loc', location.vicinity)
-    card.onclick = selectCard;
+    card.addEventListener('click', selectCard);
 
     info.innerHTML = '<p class="location-name">' + location.name + '</p><p class="address">' + location.vicinity + '</p>';
 

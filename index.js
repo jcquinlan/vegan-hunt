@@ -15,6 +15,7 @@ function initMap() {
         center: currentLocation,
         zoom: 10
     });
+    map.setOptions({ styles: mapStyles });
 
     infowindow = new google.maps.InfoWindow();
     service = new google.maps.places.PlacesService(map);
@@ -111,6 +112,7 @@ function getLocation() {
 function logLocation(location){
     console.log(location.coords.latitude);
 }
+
 
 //Places all of the markers in the array onto the map
 function populateMap(map){
