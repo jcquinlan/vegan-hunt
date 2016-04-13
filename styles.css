@@ -10,6 +10,7 @@ html, body {
     height: 100%;
     margin: 0;
     padding: 0;
+    background-color: #fafafa;
 }
 h1, h2, h3, h4, h5, h6, p, a {
     font-family: 'Open Sans', sans-serif;
@@ -33,7 +34,9 @@ h1, h2, h3, h4, h5, h6, p, a {
 #loc-search {
     margin-bottom: 50px;
     padding: 10px !important;
-    border-bottom: 4px solid #25B010;
+    border-bottom: 3px solid #25B010;
+    background-color: #fafafa;
+    height: 50px;
 }
 #map {
     width: 100%;
@@ -59,13 +62,21 @@ h1, h2, h3, h4, h5, h6, p, a {
     border-color: none;
 }
 
+#results {
+    text-align: center;
+    margin: 50px 0;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 800;
+    font-size: 40px;
+}
+
 .card {
     padding: 10px;
     text-align: center;
     border: 1px solid #eee;
     margin-bottom: 30px;
     height: 150px;
-    cursor: pointer;
+    background-color: #fff;
 }
 .card:hover {
     border: 1px solid #ccc;
@@ -80,7 +91,22 @@ h1, h2, h3, h4, h5, h6, p, a {
     transform: translateY(-50%);
 
 }
-
+.card .fa-plus {
+    display: none;
+    position: absolute;
+    right: 28px;
+    font-size: 18px;
+    color: #25B010;
+    cursor: pointer;
+}
+.card:hover .fa-plus {
+    display: inherit;
+}
 .address {
     opacity: 0.8;
+}
+.open-now i {
+    margin-right: 5px;
+    font-size: 18px;
+    color: #25B010;
 }

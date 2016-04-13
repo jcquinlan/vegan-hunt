@@ -1,19 +1,16 @@
+// Init the global variables - these will be wrapped later
 var map, service, infowindow;
-
 var searchTerm = 'vegan';
-
 var wrapper = document.getElementById('cards');
-
 var markerList = [],
     resultsList = [];
-
-var currentLocation = {lat: 40.298, lng: -75.134};
+var currentLocation = {lat: 34.298, lng: -85.134};
 
 // Creates the map, and assigns it a beginning location + search term
 function initMap() {
     map = new google.maps.Map(document.getElementById('map'), {
         center: currentLocation,
-        zoom: 10
+        zoom: 12,
     });
     map.setOptions({ styles: mapStyles });
 
@@ -27,6 +24,8 @@ function initMap() {
     getLocation();
 }
 
+
+// Sets up Google's GUI for the map
 function initGUI(){
     var input = document.getElementById('loc-search');
     var autocomplete = new google.maps.places.Autocomplete(input);
@@ -54,6 +53,8 @@ function initGUI(){
     });
 }
 
+
+// Actually makes the call to the API to recieve a list of the locations
 function searchMap(loc, dist, keyword){
     service.nearbySearch({
         location: loc,
@@ -63,28 +64,52 @@ function searchMap(loc, dist, keyword){
     }, handleResults);
 }
 
+
+// Callback that is executed after the async API call
 function handleResults(results, status){
     if (status === google.maps.places.PlacesServiceStatus.OK) {
         storeResults(results);
         addMarkers();
+        updateResultsNumber();
         resultsList.forEach(function(location){
             createCard(location);
         });
     }
 }
 
+function updateResultsNumber(){
+    var resultsNum = document.getElementById('results-number');
+    resultsNum.innerHTML = resultsList.length;
+}
+
+function getRestaurantDetails(location){
+    service.getDetails({ placeId: location }, callback);
+
+    function callback(place, status) {
+      if (status == google.maps.places.PlacesServiceStatus.OK) {
+        console.log(place);
+      }
+    }
+}
+
+
+// Store the results of the API call in a global array
 function storeResults(results) {
     for (var i = 0; i < results.length; i++) {
         resultsList.push(results[i]);
     }
 }
 
+
+// Create marker for each location
 function addMarkers(){
     for (var i = 0; i < resultsList.length; i++) {
         createMarker(resultsList[i]);
     }
 }
 
+
+// Create one marker for one location
 function createMarker(result) {
   var marker = new google.maps.Marker({
       map: map,
@@ -93,6 +118,7 @@ function createMarker(result) {
 
   // Adds marker to array of markers so they can be handled later
   markerList.push(marker);
+
 
   google.maps.event.addListener(marker, 'mouseover', function() {
       infowindow.setContent(result.name + '<br /> ' + result.vicinity + ' ');
@@ -104,6 +130,7 @@ function createMarker(result) {
   });
 }
 
+// Gets current location of the user
 function getLocation() {
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(logLocation);
@@ -111,6 +138,7 @@ function getLocation() {
         console.log("Geolocation is not supported by this browser.");
     }
 }
+
 
 //This will eventually get the users location using the HTML5 API
 function logLocation(location){
