@@ -6,6 +6,8 @@
  *
  */
 
+
+/* ------------------------ General ----------------------------- */
 html, body {
     height: 100%;
     margin: 0;
@@ -14,6 +16,7 @@ html, body {
 }
 h1, h2, h3, h4, h5, h6, p, a {
     font-family: 'Open Sans', sans-serif;
+    color: #444;
 }
 
 .title {
@@ -75,8 +78,13 @@ h1, h2, h3, h4, h5, h6, p, a {
     text-align: center;
     border: 1px solid #eee;
     margin-bottom: 30px;
-    height: 150px;
+    height: 130px;
     background-color: #fff;
+    cursor: pointer;
+    overflow: hidden;
+}
+.card > div {
+    margin-top: 30px;
 }
 .card:hover {
     border: 1px solid #ccc;
@@ -85,11 +93,8 @@ h1, h2, h3, h4, h5, h6, p, a {
     -o-transition: 0.3s;
     transition: 0.3s;
 }
-.card > div {
-    position: relative;
-    top: 50%;
-    transform: translateY(-50%);
-
+.additional-info {
+    margin-top: 40px;
 }
 .card .fa-plus {
     display: none;
@@ -104,9 +109,24 @@ h1, h2, h3, h4, h5, h6, p, a {
 }
 .address {
     opacity: 0.8;
+    margin-bottom: 40px;
 }
 .open-now i {
     margin-right: 5px;
     font-size: 18px;
     color: #25B010;
+}
+
+/* ----------------------- Footer -------------------------- */
+footer {
+    background-color: #444;
+    margin-top: 30px;
+}
+.container-fluid {
+    padding: 0;
+}
+
+/* ------------------------ Utility --------------------------- */
+.open {
+    height: 300px;
 }
