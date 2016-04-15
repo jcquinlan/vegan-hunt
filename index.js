@@ -186,7 +186,7 @@ function createCard(location){
     card.addEventListener('click', openCard);
 
     info.innerHTML = '<p class="location-name">' + location.name + '</p><p class="address">' + location.vicinity + '</p>';
-    additionalInfo.innerHTML = '<p class="rating">' + location.rating;
+    if(location.rating) additionalInfo.innerHTML = '<p class="rating">' + location.rating + '<i class="fa fa-star"></i>';
 
     if(location.opening_hours && location.opening_hours.open_now){
         info.innerHTML = info.innerHTML + '<p class="open-now"><i class="fa fa-clock-o" aria-hidden="true"></i>Open Now</p>';
@@ -223,10 +223,14 @@ function openCard(event){
     var elem = this;
     elem.classList.toggle('open');
 
-    if(elem.className.indexOf('open') != -1){
+    console.log(elem.className);
+
+    if(elem.className.indexOf('open') != -1 && elem.className.indexOf('opened') === -1){
         // Async get more details from Places library in Maps API
         getRestaurantDetails(this.getAttribute('id'), elem);
     }
+
+    elem.classList.add('opened');
 }
 
 // Async call to get full details on the restaurant a user clicked
@@ -237,8 +241,8 @@ function getRestaurantDetails(location, element){
     function callback(place, status) {
       if (status == google.maps.places.PlacesServiceStatus.OK) {
         console.log(place);
-        additionalInfo.innerHTML += '<p>' + place.website + '</p>';
-        additionalInfo.innerHTML += '<p>' + place.formatted_phone_number + '</p>';
+        if(place.website) additionalInfo.innerHTML += '<a href=' + place.website + ' target="_blank">Visit Website</p>';
+        if(place.formatted_phone_number) additionalInfo.innerHTML += '<p>' + place.formatted_phone_number + '</p>';
       }
     }
 }

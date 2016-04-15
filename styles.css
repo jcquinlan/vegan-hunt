@@ -14,7 +14,7 @@ html, body {
     padding: 0;
     background-color: #fafafa;
 }
-h1, h2, h3, h4, h5, h6, p, a {
+h1, h2, h3, h4, h5, h6, p, a, a:active {
     font-family: 'Open Sans', sans-serif;
     color: #444;
 }
@@ -107,6 +107,10 @@ h1, h2, h3, h4, h5, h6, p, a {
 .card:hover .fa-plus {
     display: inherit;
 }
+.fa-star {
+    color: gold;
+    margin-left: 5px;
+}
 .address {
     opacity: 0.8;
     margin-bottom: 40px;
@@ -122,8 +126,31 @@ footer {
     background-color: #444;
     margin-top: 30px;
 }
+footer h6 {
+    color: #fff;
+    text-align: center;
+}
+footer h6 {
+    margin: 20px 0;
+}
+
 .container-fluid {
     padding: 0;
+}
+footer .row {
+    margin-right: 0;
+    margin-left: 0px;
+}
+footer a {
+    color: #fff;
+}
+footer a:hover {
+    opacity: 0.8;
+    color: #fff;
+    text-decoration: none;
+}
+footer .fa-github {
+    margin-left: 5px;
 }
 
 /* ------------------------ Utility --------------------------- */
