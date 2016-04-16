@@ -103,7 +103,8 @@ function addMarkers(){
 function createMarker(result) {
   var marker = new google.maps.Marker({
       map: map,
-      position: result.geometry.location
+      position: result.geometry.location,
+      icon: 'http://maps.google.com/intl/en_us/mapfiles/ms/micons/yellow.png'
   });
 
   // Adds marker to array of markers so they can be handled later
